@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .heart {
+            width: 1vmin; /* Adjust width relative to the viewport size */
+            height: 1vmin; /* Adjust height relative to the viewport size */
+            background-color: pink;
+            position: absolute;
+            bottom: 0;
+            transform: rotate(-45deg);
+            animation: heartAnimation 1s linear infinite; /* Adjust animation speed */
+            transform-origin: center;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            width: 1vmin; /* Adjust width relative to the viewport size */
+            height: 1vmin; /* Adjust height relative to the viewport size */
+            background-color: pink;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -0.5vmin; /* Adjust top relative to the viewport size */
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 0.5vmin; /* Adjust left relative to the viewport size */
+        }
+
+        @keyframes heartAnimation {
+            0% {
+                transform: translateY(0) rotate(-45deg);
+            }
+            50% {
+                transform: translateY(-6vmin) rotate(-45deg); /* Adjust translateY relative to the viewport size */
+            }
+            100% {
+                transform: translateY(0) rotate(-45deg);
+            }
+        }
+
+        .gif_container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 5vmin; /* Adjust margin relative to the viewport size */
+        }
+
+        .header_text {
+            font-family: 'Sofia', sans-serif;
+            font-size: 4vmin; /* Adjust font size relative to the viewport size */
+            color: pink;
+            margin-top: 2vmin; /* Adjust margin relative to the viewport size */
+            margin-bottom: 0;
+        }
+
+        .btn {
+            background-color: #FFB6C1;
+            color: white;
+            padding: 2vmin 5vmin; /* Adjust padding relative to the viewport size */
+            text-align: center;
+            font-size: 2vmin; /* Adjust font size relative to the viewport size */
+            cursor: pointer;
+            border: none;
+            border-radius: 1vmin; /* Adjust border radius relative to the viewport size */
+            transition: background-color 0.3s ease;
+            margin-top: 2vmin; /* Adjust margin relative to the viewport size */
+        }
+    </style>
+    <link rel="stylesheet" href="./q1-styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+</head>
+<body>
+    <div>
+        <img src="./q1.gif" alt="Cute animated illustration" style="width: 50vmin; height: 50vmin;">
+    </div>
+    <div class="gif_container">
+        <div>
+            <h1 class="header_text">When was our first road trip?</h1>
+        </div>
+
+        <div class="gif_container">
+            <button class="btn" onclick="nextPage()">17th Feb - Bangalore</button>
+        </div>
+
+        <div class="gif_container">
+            <button class="btn" onclick="()=>{}">16th Feb - Bangalore</button>
+        </div>
+    </div>
+
+    <script>
+        function nextPage() {
+            window.location.href = "q2.html";
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            const body = document.body;
+
+            function createHeart() {
+                const heart = document.createElement("div");
+                heart.className = "heart";
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 2500);
+            }
+
+            setInterval(createHeart, 200);
+        });
+    </script>
+</body>
+</html>

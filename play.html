@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #fff;
+            font-family: 'Sofia', sans-serif;
+        }
+
+        .heart {
+            width: 1.5vmin; /* Adjust width relative to the viewport size */
+            height: 1.5vmin; /* Adjust height relative to the viewport size */
+            background-color: pink;
+            position: absolute;
+            bottom: 0;
+            transform: rotate(-45deg);
+            animation: heartAnimation 2s linear infinite;
+            transform-origin: center;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            width: 1.5vmin; /* Adjust width relative to the viewport size */
+            height: 1.5vmin; /* Adjust height relative to the viewport size */
+            background-color: pink;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -0.75vmin; /* Adjust top relative to the viewport size */
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 0.75vmin; /* Adjust left relative to the viewport size */
+        }
+
+        @keyframes heartAnimation {
+            0% {
+                transform: translateY(0) rotate(-45deg);
+            }
+            50% {
+                transform: translateY(-10vmin) rotate(-45deg); /* Adjust translateY relative to the viewport size */
+            }
+            100% {
+                transform: translateY(0) rotate(-45deg);
+            }
+        }
+
+        .gif_container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .header_text {
+            font-size: 4vmin; /* Adjust font size relative to the viewport size */
+            color: pink;
+            margin-top: 2vmin; /* Adjust margin relative to the viewport size */
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #FFB6C1;
+            color: white;
+            padding: 2vmin 5vmin; /* Adjust padding relative to the viewport size */
+            font-size: 2vmin; /* Adjust font size relative to the viewport size */
+            cursor: pointer;
+            border: none;
+            border-radius: 1vmin; /* Adjust border radius relative to the viewport size */
+            transition: background-color 0.3s ease;
+            margin-top: 2vmin; /* Adjust margin relative to the viewport size */
+        }
+    </style>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+</head>
+<body>
+    <div>
+        <img src="https://e1.pxfuel.com/desktop-wallpaper/722/16/desktop-wallpaper-peach-and-goma-mochi-cat-gaming-sticker-decal-vinyl-bumper-sticker-decal-waterproof-5-mochi-mochi-peach-cat.jpg" alt="Cute animated illustration" style="width: 50vmin; height: 50vmin;">
+    </div>
+    <div class="gif_container">
+        <div>
+            <h1 class="header_text">Hi Chicoo, let’s play a game?</h1>
+        </div>
+        <div>
+            <button class="btn" onclick="nextPage()">Play</button>
+        </div>
+    </div>
+
+    <script>
+        function nextPage() {
+            window.location.href = "q1.html";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const body = document.body;
+
+            function createHeart() {
+                const heart = document.createElement("div");
+                heart.className = "heart";
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 2000);
+            }
+
+            setInterval(createHeart, 100);
+        });
+    </script>
+</body>
+</html>
