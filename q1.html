@@ -100,7 +100,7 @@
         </div>
 
         <div class="gif_container">
-            <button class="btn" onclick="()=>{}">16th Feb - Bangalore</button>
+            <button class="btn" onclick="createAndBreakHeart()">16th Feb - Bangalore</button>
         </div>
     </div>
 
@@ -108,6 +108,30 @@
         function nextPage() {
             window.location.href = "q2.html";
         }
+        function createAndBreakHeart() {
+        const body = document.body;
+
+        // Create cry image element
+        const cryImage = document.createElement("img");
+        cryImage.src = "cry.gif";
+        cryImage.alt = "Cry Image";
+        cryImage.style.width = "50vmin";
+        cryImage.style.height = "50vmin";
+        body.appendChild(cryImage);
+
+        // Create heart element
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left =  window.innerWidth + "px";
+        body.appendChild(heart);
+
+        // Remove cry image and heart after a certain time
+        setTimeout(() => {
+            cryImage.remove();
+            heart.remove();
+        }, 2500);
+    }
+
         document.addEventListener("DOMContentLoaded", function() {
             const body = document.body;
 
